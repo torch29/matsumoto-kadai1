@@ -6,7 +6,7 @@
 
 @section('admin')
 <div class="header-utilities">
-    <form action="" class="header-utilities__button">
+    <form action="/logout" class="header-utilities__button">
     @csrf
         <button class="header-utilities__button-submit" type="submit">logout</button>
     </form>

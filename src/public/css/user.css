@@ -1,0 +1,29 @@
+.register__content,
+.login__content {
+    max-width: 100%;
+}
+
+.section__title {
+    text-align: center;
+}
+
+.register-form,
+.login-form {
+    width: 70%;
+    margin: 0 auto;
+}
+
+
+
+.register-form__button,
+.login-form__button {
+    display: flex;
+    width: 100px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.register-form__button-submit,
+.login-form__button-submit {
+    width: 100%;
+}

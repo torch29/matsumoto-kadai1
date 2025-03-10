@@ -11,4 +11,16 @@ class AdminController extends Controller
         $contacts = Contact::Paginate(5);
         return view('/admin', ['contacts' => $contacts]);
     }
+
+    public function register() {
+        return view('/auth/register');
+    }
+
+    public function login() {
+        return view('/auth/login');
+    }
+
+    public function logout() {
+        return view('/auth/login');
+    }
 }

@@ -18,3 +18,6 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [ContactController::class, 'index']);
 
 Route::get('/admin', [AdminController::class, 'admin']);
+Route::get('/register', [AdminController::class, 'register']);
+Route::get('/login', [AdminController::class, 'login']);
+Route::get('/logout', [AdminController::class, 'logout']);
