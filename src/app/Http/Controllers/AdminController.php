@@ -7,17 +7,17 @@ use App\Models\Contact;
 
 class AdminController extends Controller
 {
-    public function admin() {
+    /*public function admin() {
         $contacts = Contact::Paginate(5);
         return view('/admin', ['contacts' => $contacts]);
-    }
+    }*/
 
     public function register() {
-        return view('/auth/register');
+        return view('/auth/login');
     }
 
     public function login() {
-        return view('/auth/login');
+        return view('/admin');
     }
 
     public function logout() {

@@ -37,7 +37,10 @@
             <div class="form__error">エラー表示エリア</div>
         </div>
         <div class="register-form__button">
-            <button class="register-form__button-submit" type="submit">登録</button>
+            <form action="/register" class="header-utilities__button">
+            @csrf
+                <button class="register-form__button-submit" type="submit">登録</button>
+            </form>
         </div>
     </form>
 

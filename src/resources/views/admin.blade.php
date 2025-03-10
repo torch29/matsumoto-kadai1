@@ -59,14 +59,28 @@
                 <th class="contact-table__header">メールアドレス</th>
                 <th class="contact-table__header">お問い合わせの種類</th>
             </tr>
+            @foreach ($contacts as $contact)
             <tr class="contact-table__row">
-                <td class="contact-table__item">苗字</td>
-                <td class="contact-table__item">名前</td>
-                <td class="contact-table__item">性別</td>
-                <td class="contact-table__item">メールアドレス</td>
-                <td class="contact-table__item">問い合わせカテゴリ</td>
-                <td class="contact-table__item">詳細</td>
+                <td class="contact-table__item">
+                    {{ $contact->last_name }}
+                </td>
+                <td class="contact-table__item">
+                    {{ $contact->first_name }}
+                </td>
+                <td class="contact-table__item">
+                    {{ $genders[$contact->gender] }}
+                </td>
+                <td class="contact-table__item">
+                    {{ $contact->email }}
+                </td>
+                <td class="contact-table__item">
+                    {{ $contact->category_id }}
+                </td>
+                <td class="contact-table__item">
+                    <button class="contact-table__item-button">詳細</button>
+                </td>
             </tr>
+            @endforeach
         </table>
     </div>
 </div>
