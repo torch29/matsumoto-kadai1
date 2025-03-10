@@ -15,12 +15,7 @@
         <div class="header__logo">
             <a href="/">FashionablyLate</a>
         </div>
-        <div class="header-utilities">
-            <form action="" class="header-utilities__button">
-            @csrf
-                <button class="header-utilities__button-submit" type="submit">register</button>
-            </form>
-        </div>
+        @yield('admin')
     </div>
 </header>
 
