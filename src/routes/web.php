@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +15,15 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/admin', [ContactController::class, 'index']);
+Route::middleware('auth')->group(function () {
+    Route::get('/admin', [AuthController::class, 'index']);
+});
 
-/*Route::get('/admin', [AdminController::class, 'admin']);*/
-Route::get('/register', [AdminController::class, 'register']);
-Route::get('/login', [AdminController::class, 'login']);
-Route::get('/logout', [AdminController::class, 'logout']);
+/*
+Route::get('/admin', [ContactController::class, 'index']);
+*/
+
+Route::get('/register', [AuthController::class, 'signup']);
+Route::get('/login', [AuthController::class, 'signin'])->name('login');
+/*Route::post('/login', [AuthController::class, 'login']);*/
+Route::get('/logout', [AuthController::class, 'logout']);

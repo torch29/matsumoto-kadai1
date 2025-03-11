@@ -6,7 +6,7 @@
 
 @section('admin')
 <div class="header-utilities">
-    <form action="/logout" class="header-utilities__button">
+    <form action="/logout" class="header-utilities__button" method="post">
     @csrf
         <button class="header-utilities__button-submit" type="submit">logout</button>
     </form>
@@ -36,7 +36,7 @@
         </div>
         <div class="search-form__button">
             <button class="search-form__button-search">検索</button>
-            <button class="search-form__button-reset">リセット</button>
+            <button class="search-form__button-reset" type="reset">リセット</button>
         </div>
     </form>
 
@@ -46,7 +46,7 @@
         </div>
         <div class="nav__page-link">
         <p>ページネーション</p>
-        {{--{{ $authors->links() }}--}}
+        {{ $contacts->links() }}
         </div>
     </div>
 

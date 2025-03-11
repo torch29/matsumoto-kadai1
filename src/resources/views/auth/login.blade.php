@@ -6,10 +6,7 @@
 
 @section('admin')
     <div class="header-utilities">
-        <form action="/register" class="header-utilities__button" method="get">
-        @csrf
-            <button class="header-utilities__button-submit" type="submit">register</button>
-        </form>
+        <button class="header-utilities__button-link" type="button" onclick="location.href='/register'">register</button>
     </div>
 @endsection
 
@@ -23,21 +20,37 @@
     @csrf
         <div class="login-form__item">
             <label for="email" class="login-form__item-label">メールアドレス</label>
-            <input type="email" name="email" class="login-form__item-input">
-            <div class="form__error">エラー表示エリア</div>
+            <input type="email" name="email" class="login-form__item-input" value="{{ old('email') }}">
+            <div class="form__error">
+                @error('email')
+                {{ $message }}
+                @enderror
+            </div>
         </div>
         <div class="login-form__item">
             <label for="password" class="login-form__item-label">パスワード</label>
             <input type="password" name="password" class="login-form__item-input">
-            <div class="form__error">エラー表示エリア</div>
+            <div class="form__error">
+                @error('password')
+                {{ $message }}
+                @enderror
+            </div>
         </div>
         <div class="login-form__button">
-            <form action="" class="header-utilities__button">
-            @csrf
-                <button class="login-form__button-submit" type="submit">ログイン</button>
-            </form>
+            <button class="login-form__button-submit" type="submit">ログイン</button>
         </div>
     </form>
+
+{{--エラーあれば表示、確認用、後で消す--}}
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
 
 </div>
