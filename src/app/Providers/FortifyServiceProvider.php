@@ -13,6 +13,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\LogoutResponse;
+use App\Http\Controllers\Auth\RegisteredUserController; // 追記
+use Laravel\Fortify\Http\Controllers\RegisteredUserController as FortifyRegisteredUserController; // 追記
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -66,5 +68,6 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(10)->by($email . $request->ip());
         });
 
+        $this->app->singleton(FortifyRegisteredUserController::class, RegisteredUserController::class);
     }
 }
