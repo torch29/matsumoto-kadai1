@@ -1,0 +1,26 @@
+.contact-form__content {
+    max-width: 100%;
+}
+
+.contact-form__title {
+    text-align: center;
+}
+
+.contact-form {
+    width: 60%;
+    margin: 0 auto;
+}
+.contact-form__group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form__group-title {
+    display: flex;
+    align-items: center;
+}
+
+
+.form__input--text textarea{
+    height: 70px;
+}

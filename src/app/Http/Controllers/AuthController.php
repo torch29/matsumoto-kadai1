@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
-use App\Http\Requests\AuthRequest;
+use Illuminate\Http\Request;
+//use App\Http\Requests\AuthRequest;
 use App\Models\Contact;
 
 class AuthController extends Controller
@@ -18,7 +18,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function index() {
+    public function admin() {
         $contacts = Contact::Paginate(7);
         $genders = [
             1 => '男性',

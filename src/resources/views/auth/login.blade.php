@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 @endsection
 
 @section('admin')
@@ -20,7 +20,7 @@
     @csrf
         <div class="login-form__item">
             <label for="email" class="login-form__item-label">メールアドレス</label>
-            <input type="email" name="email" class="login-form__item-input" value="{{ old('email') }}">
+            <input type="email" name="email" id="email" class="login-form__item-input" value="{{ old('email') }}">
             <div class="form__error">
                 @error('email')
                 {{ $message }}
@@ -29,7 +29,7 @@
         </div>
         <div class="login-form__item">
             <label for="password" class="login-form__item-label">パスワード</label>
-            <input type="password" name="password" class="login-form__item-input">
+            <input type="password" name="password" id="password" class="login-form__item-input">
             <div class="form__error">
                 @error('password')
                 {{ $message }}

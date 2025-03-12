@@ -1,0 +1,32 @@
+.confirm-form__content {
+    max-width: 100%;
+}
+
+.confirm-form__title {
+    text-align: center;
+}
+
+.confirm-form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.confirm-table__inner {
+    width: 100%;
+}
+.confirm-table__heading {
+    text-align: left;
+}
+.confirm-table__item {
+    width: 60%;
+}
+.confirm-table__item input {
+    width: 100%;
+}
+.confirm__button {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
