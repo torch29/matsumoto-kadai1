@@ -31,11 +31,11 @@
             </div>
             <div class="contact-form__group-content">
                 <div class="form__input--text">
-                    <input type="radio" name="gender" id="gender1" checked >
+                    <input type="radio" name="gender" id="gender1" value="1"  checked>
                     <label for="gender1">男性</label>
-                    <input type="radio" name="gender" id="gender2">
+                    <input type="radio" name="gender" id="gender2" value="2" {{ old('gender') == 2 ? 'checked' : '' }}>
                     <label for="gender2">女性</label>
-                    <input type="radio" name="gender" id="gender3">
+                    <input type="radio" name="gender" id="gender3" value="3" {{ old('gender') == 3 ? 'checked' : '' }}>
                     <label for="gender3">その他</label>
                 </div>
             </div>
@@ -93,8 +93,11 @@
             </div>
             <div class="contact-form__group-content">
                 <div class="form__input--text">
-                    <select class="form__item-select" name="category_id" value="選択してください">
+                    <select class="form__item-select" name="category_id" name="category_id" value="選択してください">
                         <option value="" selected>選択してください</option>
+                        @foreach ($categories as $category)
+                        <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
