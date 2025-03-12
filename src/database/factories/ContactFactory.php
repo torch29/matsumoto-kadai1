@@ -21,7 +21,7 @@ class ContactFactory extends Factory
             'first_name' => $this->faker->firstName,
             'gender' => $this->faker->numberBetween(1,3),
             'email' => $this->faker->unique()->safeEmail,
-            'tel' => $this->faker->phoneNumber,
+            'tel' => $this->faker->numerify('0##########'),
             'address' => $this->faker->city. '' .$this->faker->streetAddress,
             'building' => $this->faker->optional(0.7)->secondaryAddress, //70%でデータが入り、30%でnullが入る
             'detail' => $this->faker->realTextBetween(10,50,2),
