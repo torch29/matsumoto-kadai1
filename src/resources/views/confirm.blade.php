@@ -73,7 +73,7 @@
         {{--</div>
         <div class="confirm__button">--}}
             <input type="hidden" >
-            <button class="confirm__button-back">修正</button>
+            <button class="confirm__button-back" type="button" onclick="history.back(-1)">修正</button>
         </div>
     </form>
 @endsection
