@@ -21,12 +21,13 @@ class AuthController extends Controller
 
     public function admin() {
         $contacts = Contact::with('category')->Paginate(7);
+        $categories = Category::all();
         $genders = [
             1 => '男性',
             2 => '女性',
             3 => 'その他'
         ];
-        return view('admin', compact('contacts', 'genders'));
+        return view('admin', compact('contacts', 'genders', 'categories'));
     }
 
     public function logout() {

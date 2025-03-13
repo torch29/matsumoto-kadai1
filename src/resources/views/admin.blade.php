@@ -26,9 +26,15 @@
             <input type="text" class="search-form__item-input" name="keyword" value="{{ old('keyword') }}">
             <select name="gender" class="search-form__item-select">
                 <option value="性別" class="value">性別</option>
+                    @foreach ($genders as $gender)
+                        <option value="{{ $gender }}">{{ $gender }}</option>
+                    @endforeach
             </select>
             <select name="category_id" class="search-form__item-select">
-                <option value="">お問い合わせの種類</option>
+                <option value="" selected>お問い合わせの種類</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                    @endforeach
             </select>
             <select name="created_at" class="search-form__item-select">
                 <option value="">年/月/日</option>
