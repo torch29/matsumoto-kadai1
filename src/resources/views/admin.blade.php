@@ -24,13 +24,16 @@
     @csrf
         <div class="search-form__item">
             <input type="text" class="search-form__item-input" name="keyword" value="{{ old('keyword') }}">
-            <select name="gender" class="search-form__item-select">
-                <option value="性別" class="value">性別</option>
-                    @foreach ($genders as $gender)
-                        <option value="{{ $gender }}">{{ $gender }}</option>
+            <select name="gender_select" class="search-form__item-select">
+                <option value="" selected>性別</option>
+                <option value="9">全て</option>
+                    @foreach ($genders as $key => $val)
+                    {{--@foreach ($genders as $gender)--}}
+                        {{--<option value="{{ $gender }}">{{ $gender }}</option>--}}
+                        <option value="{{ $key }}">{{ $val }}</option>
                     @endforeach
             </select>
-            <select name="category_id" class="search-form__item-select">
+            <select name="category_select" class="search-form__item-select">
                 <option value="" selected>お問い合わせの種類</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>

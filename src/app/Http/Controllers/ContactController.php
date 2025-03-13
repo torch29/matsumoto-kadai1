@@ -39,7 +39,10 @@ class ContactController extends Controller
 
     //以下、検索機能の追加
     public function search(Request $request) {
-        $contacts = Contact::with('category')->KeywordSearch($request->keyword)->DateSearch($request->date)->Paginate(7);
+        $contacts = Contact::with('category')->KeywordSearch($request->keyword)->DateSearch($request->date)
+        ->CategorySearch($request->category_select)
+        ->GenderSearch($request->gender_select)
+        ->Paginate(7);
         $categories = Category::all();
         $genders = [
             1 => '男性',
