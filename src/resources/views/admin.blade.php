@@ -74,7 +74,7 @@
                     {{ $contact->email }}
                 </td>
                 <td class="contact-table__item">
-                    {{ $contact->category_id }}
+                    {{ $contact->category->content }}
                 </td>
                 <td class="contact-table__item">
                     <button class="contact-table__item-button">詳細</button>

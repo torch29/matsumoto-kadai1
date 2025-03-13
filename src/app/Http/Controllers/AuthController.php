@@ -20,13 +20,12 @@ class AuthController extends Controller
     }
 
     public function admin() {
-        $contacts = Contact::Paginate(7);
+        $contacts = Contact::with('category')->Paginate(7);
         $genders = [
             1 => '男性',
             2 => '女性',
             3 => 'その他'
         ];
-        //$categories = Category::with('category')->get(); // ここを修正していく
         return view('admin', compact('contacts', 'genders'));
     }
 
