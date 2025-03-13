@@ -36,9 +36,7 @@
                         <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
                     @endforeach
             </select>
-            <select name="created_at" class="search-form__item-select">
-                <option value="">年/月/日</option>
-            </select>
+            <input type="date" name="date" value="年/月/日">
         </div>
         <div class="search-form__button">
             <button class="search-form__button-search">検索</button>

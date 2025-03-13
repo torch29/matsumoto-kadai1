@@ -29,7 +29,15 @@ class Contact extends Model
     public function scopeKeywordSearch($query, $keyword) {
         if (!empty($keyword)) {
             $query->where('first_name', 'like', '%' . $keyword . '%')
-            ->orWhere('last_name', 'like', '%' . $keyword . '%');
+            ->orWhere('last_name', 'like', '%' . $keyword . '%')
+            ->orWhere('email', 'like', '%' . $keyword . '%');
+            //->orWhere('last_name' . 'first_name' , 'like' , $keyword);
+        }
+    }
+
+    public function scopeDateSearch($query, $date) {
+        if (!empty($date)) {
+            $query->whereDate('created_at', '=' , $date);
         }
     }
 }
