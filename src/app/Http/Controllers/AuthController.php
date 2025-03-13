@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 //use App\Http\Requests\AuthRequest;
 use App\Models\Contact;
+use App\Models\Category;
 
 class AuthController extends Controller
 {
@@ -25,6 +26,7 @@ class AuthController extends Controller
             2 => '女性',
             3 => 'その他'
         ];
+        //$categories = Category::with('category')->get(); // ここを修正していく
         return view('admin', compact('contacts', 'genders'));
     }
 
