@@ -25,4 +25,11 @@ class Contact extends Model
         'building',
         'detail'
     ];
+
+    public function scopeKeywordSearch($query, $keyword) {
+        if (!empty($keyword)) {
+            $query->where('first_name', 'like', '%' . $keyword . '%')
+            ->orWhere('last_name', 'like', '%' . $keyword . '%');
+        }
+    }
 }

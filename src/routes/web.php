@@ -17,19 +17,23 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
+//表示
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AuthController::class, 'admin']);
 });
-
 
 Route::get('/register', [AuthController::class, 'signup']);
 Route::get('/login', [AuthController::class, 'signin'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout']);
 
+//登録・ログイン機能
 Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
-
+//問い合わせフォーム
 Route::get('/', [ContactController::class, 'index']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
+
+//検索
+Route::get('/contacts/search', [ContactController::class, 'search']);

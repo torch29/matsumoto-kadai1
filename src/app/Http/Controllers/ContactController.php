@@ -36,4 +36,17 @@ class ContactController extends Controller
 
         return view('thanks');
     }
+
+    //以下、検索機能の追加
+    public function search(Request $request) {
+        $contacts = Contact::with('category')->KeywordSearch($request->keyword)->Paginate(7);
+        $categories = Category::all();
+        $genders = [
+            1 => '男性',
+            2 => '女性',
+            3 => 'その他'
+        ];
+
+        return view('admin', compact('contacts', 'categories', 'genders'));
+    }
 }

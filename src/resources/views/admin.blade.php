@@ -20,10 +20,10 @@
     </div>
 
 {{--検索フォーム--}}
-    <form action="" class="search-form" method="post">
+    <form action="/contacts/search" class="search-form" method="get">
     @csrf
         <div class="search-form__item">
-            <input type="text" class="search-form__item-input" name="content" value="{{ old('content') }}">
+            <input type="text" class="search-form__item-input" name="keyword" value="{{ old('keyword') }}">
             <select name="gender" class="search-form__item-select">
                 <option value="性別" class="value">性別</option>
             </select>
@@ -36,7 +36,7 @@
         </div>
         <div class="search-form__button">
             <button class="search-form__button-search">検索</button>
-            <button class="search-form__button-reset" type="reset">リセット</button>
+            <button class="search-form__button-reset" type="reset" type="button" onclick="location.href='/admin'">リセット</button>
         </div>
     </form>
 
