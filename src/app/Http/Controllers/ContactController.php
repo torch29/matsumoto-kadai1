@@ -39,6 +39,7 @@ class ContactController extends Controller
 
     //以下、検索機能の追加
     public function search(Request $request) {
+        $searched = $request -> session()->get('find');
         $contacts = Contact::with('category')->KeywordSearch($request->keyword)->DateSearch($request->date)
         ->CategorySearch($request->category_select)
         ->GenderSearch($request->gender_select)
@@ -49,6 +50,7 @@ class ContactController extends Controller
             2 => '女性',
             3 => 'その他'
         ];
+        $request -> session() -> put('find');
 
         return view('admin', compact('contacts', 'categories', 'genders'));
     }
