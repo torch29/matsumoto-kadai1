@@ -63,47 +63,54 @@
                     {{ $contact->category->content }}
                 </td>
                 <td class="contact-table__item">
-                    <button wire:click="openModal()" type="button" class="contact-table__item-button">詳細</button>
+                    <button wire:click="openModal({{ $contact->id }})" type="button" class="contact-table__item-button">詳細</button>
 
+                </td>
+            </tr>
+            @endforeach
+
+{{--モーダルウィンドウ--}}
     @if($showModal)
-        <div class="modal-dialog">
+    <div class="modal-dialog">
+        <table class="modal__content">
             <button wire:click="closeModal()" type="button">×</button>
-            <table class="modal__content">
+                @if($selectedContact)
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">お名前</th>
                     <td class="modal-table__item">
-                        {{ $contact->last_name }}
-                        {{ $contact->first_name }}
+                        {{ $selectedContact->last_name }}
+                        {{ $selectedContact->first_name }}
                     </td>
                 </tr>
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">性別</th>
-                    <td class="modal-table__item">{{ $genders[$contact->gender] }}</td>
+                    <td class="modal-table__item">{{ $genders[$selectedContact->gender] }}</td>
                 </tr>
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">メールアドレス</th>
-                    <td class="modal-table__item">{{ $contact->email }}</td>
+                    <td class="modal-table__item">{{ $selectedContact->email }}</td>
                 </tr>
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">電話番号</th>
-                    <td class="modal-table__item">{{ $contact->tel }}</td>
+                    <td class="modal-table__item">{{ $selectedContact->tel }}</td>
                 </tr>
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">住所</th>
-                    <td class="modal-table__item">{{ $contact->address }}</td>
+                    <td class="modal-table__item">{{ $selectedContact->address }}</td>
                 </tr>
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">建物名</th>
-                    <td class="modal-table__item">{{ $contact->building }}</td>
+                    <td class="modal-table__item">{{ $selectedContact->building }}</td>
                 </tr>
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">お問い合わせの種類</th>
-                    <td class="modal-table__item">{{ $contact->category->content }}</td>
+                    <td class="modal-table__item">{{ $selectedContact->category->content }}</td>
                 </tr>
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">お問い合わせ内容</th>
-                    <td class="modal-table__item">{{ $contact->detail }}</td>
+                    <td class="modal-table__item">{{ $selectedContact->detail }}</td>
                 </tr>
+                @endif
             </table>
             <form action="/delete" class="form" method="post">
             @method('delete')
@@ -114,11 +121,9 @@
                 </div>
             </form>
         </div>
-        
+
     @endif
-</td>
-            </tr>
-            @endforeach
+
         </table>
     </div>
 </div>

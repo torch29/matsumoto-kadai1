@@ -29,7 +29,7 @@ Route::get('/login', [AuthController::class, 'signin'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/modal', Modal::class);
-Route::get('/testmodal', [ModalController::class, 'testmodal']); //モーダルのテスト用
+Route::get('/testmodal', [ModalController::class, 'testmodal']); //モーダルのテスト用 /testmodalにアクセスすると、/modalが表示される
 
 //登録・ログイン機能
 Route::post('/register', [RegisteredUserController::class, 'store']);
