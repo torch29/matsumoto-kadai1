@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AuthController;
+use App\Http\Livewire\Modal;
+use App\Http\Controllers\ModalController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -25,6 +27,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/register', [AuthController::class, 'signup']);
 Route::get('/login', [AuthController::class, 'signin'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::get('/modal', Modal::class);
+Route::get('/testmodal', [ModalController::class, 'testmodal']); //モーダルのテスト用
 
 //登録・ログイン機能
 Route::post('/register', [RegisteredUserController::class, 'store']);

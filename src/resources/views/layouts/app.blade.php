@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
+    @yield('head_modal')
 </head>
+
 <body>
 
 <header class="header">
@@ -23,5 +25,6 @@
     @yield('content')
 </main>
 
+@yield('body_modal')
 </body>
 </html>

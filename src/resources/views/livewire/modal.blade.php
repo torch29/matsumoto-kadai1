@@ -1,30 +1,4 @@
-@extends('layouts.app')
-
-@section('css')
-<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-@endsection
-
-{{--
-@section('head_modal')
-    @livewireStyles
-@endsection--}}
-
-@section('admin')
-<div class="header-utilities">
-    <form action="/logout" class="header-utilities__button" method="post">
-    @csrf
-        <button class="header-utilities__button-submit" type="submit">logout</button>
-    </form>
-</div>
-@endsection
-
-@section('content')
-<div class="admin__content">
-    <div class="section__title">
-        <h2>Admin</h2>
-    </div>
-
-{{--検索フォーム--}}
+<div>
     <form action="/contacts/search" class="search-form" method="get">
     @csrf
         <div class="search-form__item">
@@ -89,17 +63,62 @@
                     {{ $contact->category->content }}
                 </td>
                 <td class="contact-table__item">
-                    <button class="contact-table__item-button">詳細</button>
-                </td>
+                    <button wire:click="openModal()" type="button" class="contact-table__item-button">詳細</button>
+
+    @if($showModal)
+        <div class="modal-dialog">
+            <button wire:click="closeModal()" type="button">×</button>
+            <table class="modal__content">
+                <tr class="modal-table__row">
+                    <th class="modal-table__heading">お名前</th>
+                    <td class="modal-table__item">
+                        {{ $contact->last_name }}
+                        {{ $contact->first_name }}
+                    </td>
+                </tr>
+                <tr class="modal-table__row">
+                    <th class="modal-table__heading">性別</th>
+                    <td class="modal-table__item">{{ $genders[$contact->gender] }}</td>
+                </tr>
+                <tr class="modal-table__row">
+                    <th class="modal-table__heading">メールアドレス</th>
+                    <td class="modal-table__item">{{ $contact->email }}</td>
+                </tr>
+                <tr class="modal-table__row">
+                    <th class="modal-table__heading">電話番号</th>
+                    <td class="modal-table__item">{{ $contact->tel }}</td>
+                </tr>
+                <tr class="modal-table__row">
+                    <th class="modal-table__heading">住所</th>
+                    <td class="modal-table__item">{{ $contact->address }}</td>
+                </tr>
+                <tr class="modal-table__row">
+                    <th class="modal-table__heading">建物名</th>
+                    <td class="modal-table__item">{{ $contact->building }}</td>
+                </tr>
+                <tr class="modal-table__row">
+                    <th class="modal-table__heading">お問い合わせの種類</th>
+                    <td class="modal-table__item">{{ $contact->category->content }}</td>
+                </tr>
+                <tr class="modal-table__row">
+                    <th class="modal-table__heading">お問い合わせ内容</th>
+                    <td class="modal-table__item">{{ $contact->detail }}</td>
+                </tr>
+            </table>
+            <form action="/delete" class="form" method="post">
+            @method('delete')
+            @csrf
+                <div class="delete__button">
+                    <input type="hidden" name="id">
+                    <button class="delete__button-submit" type="submit">削除</button>
+                </div>
+            </form>
+        </div>
+        
+    @endif
+</td>
             </tr>
             @endforeach
         </table>
     </div>
 </div>
-@endsection
-
-{{--@section('body_modal')
-    <livewire:modal>
-    @livewireScripts
-@endsection--}}
-
