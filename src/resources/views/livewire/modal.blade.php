@@ -1,4 +1,3 @@
-以下modal.blade.php
 
 {{--問い合わせ内容テーブル表示--}}
     <div class="contact-table__content">
@@ -32,8 +31,6 @@
                 </td>
             </tr>
             @endforeach
-        </table>
-    </div>
 
 {{--モーダルウィンドウ--}}
     @if($showModal && $selectedContact)
@@ -75,7 +72,9 @@
                     <td class="modal-table__item">{{ $selectedContact->detail }}</td>
                 </tr>
             </table>
-            <button wire:click="deleteContact" class="delete__button-submit" type="button">削除</button>
-        </div>
-    @endif
+                <button wire:click="deleteContact" class="delete__button-submit" type="button">削除</button>
+            </div>
+        @endif
+        </table>
+    </div>
 </div>
