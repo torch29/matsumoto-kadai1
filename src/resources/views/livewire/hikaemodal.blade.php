@@ -1,4 +1,41 @@
-以下modal.blade.php
+<div>
+{{--検索フォーム--}}
+    <form action="/contacts/search" class="search-form" method="get">
+    @csrf
+        <div class="search-form__item">
+            <input type="text" class="search-form__item-input" wire:model="keyword" value="{{ old('keyword') }}">
+            <select wire:model="gender_select" class="search-form__item-select">
+                <option value="" selected>性別</option>
+                <option value="9">全て</option>
+                    @foreach ($genders as $key => $val)
+                    {{--@foreach ($genders as $gender)--}}
+                        {{--<option value="{{ $gender }}">{{ $gender }}</option>--}}
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+            </select>
+            <select wire:model="category_select" class="search-form__item-select">
+                <option value="" selected>お問い合わせの種類</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                    @endforeach
+            </select>
+            <input type="date" wire:model="date" value="年/月/日">
+        </div>
+        <div class="search-form__button">
+            <button class="search-form__button-search" wire:click="search">検索</button>
+            <button class="search-form__button-reset" type="reset" type="button" onclick="location.href='/admin'">リセット</button>
+        </div>
+    </form>
+
+    <div class="nav-area">
+        <div class="nav__export-button">
+            <button class="export-button__submit">エクスポート</button>
+        </div>
+        <div class="nav__page-link">
+        <p>ページネーション</p>
+        {{ $contacts->links() }}
+        </div>
+    </div>
 
 {{--問い合わせ内容テーブル表示--}}
     <div class="contact-table__content">
@@ -32,8 +69,6 @@
                 </td>
             </tr>
             @endforeach
-        </table>
-    </div>
 
 {{--モーダルウィンドウ--}}
     @if($showModal && $selectedContact)
@@ -75,7 +110,9 @@
                     <td class="modal-table__item">{{ $selectedContact->detail }}</td>
                 </tr>
             </table>
-            <button wire:click="deleteContact" class="delete__button-submit" type="button">削除</button>
-        </div>
-    @endif
+                <button wire:click="deleteContact" class="delete__button-submit" type="button">削除</button>
+            </div>
+        @endif
+        </table>
+    </div>
 </div>

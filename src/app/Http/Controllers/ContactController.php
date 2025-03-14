@@ -37,10 +37,12 @@ class ContactController extends Controller
         return view('thanks');
     }
 
+
+    /*
     //以下、検索機能の追加
     public function search(Request $request) {
-        $searched = $request -> session()->get('find');
-        $contacts = Contact::with('category')->KeywordSearch($request->keyword)->DateSearch($request->date)
+        $contacts = Contact::with('category')->KeywordSearch($request->keyword)
+        ->DateSearch($request->date)
         ->CategorySearch($request->category_select)
         ->GenderSearch($request->gender_select)
         ->Paginate(7);
@@ -50,9 +52,35 @@ class ContactController extends Controller
             2 => '女性',
             3 => 'その他'
         ];
-        $request -> session() -> put('find');
 
+        //dd($request->all());
         return view('admin', compact('contacts', 'categories', 'genders'));
     }
+        */
 
+
+    public function search(Request $request) {
+    // リクエスト内容を確認
+    //dd($request->all());
+
+    $contacts = Contact::with('category')
+        ->KeywordSearch($request->keyword)
+        ->DateSearch($request->date)
+        ->CategorySearch($request->category_select)
+        ->GenderSearch($request->gender_select);
+
+    // 実行されるSQLを確認
+    //dd($contacts->toSql(), $contacts->getBindings());
+
+    $contacts = $contacts->paginate(7)->appends($request->query());
+
+    $categories = Category::all();
+    $genders = [
+        1 => '男性',
+        2 => '女性',
+        3 => 'その他'
+    ];
+
+    return view('admin', compact('contacts', 'categories', 'genders'));
+}
 }
