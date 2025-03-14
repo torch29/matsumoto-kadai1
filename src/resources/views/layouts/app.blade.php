@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
-    @yield('head_modal')
+    @livewireStyles
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 <header class="header">
     <div class="header__inner">
         <div class="header__logo">
-            <a href="/">FashionablyLate</a>
+            <p>FashionablyLate</p>
         </div>
         @yield('admin')
     </div>
@@ -25,6 +25,7 @@
     @yield('content')
 </main>
 
-@yield('body_modal')
+@livewireScripts
+@yield('modal')
 </body>
 </html>
