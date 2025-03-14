@@ -38,4 +38,10 @@ class Modal extends Component
         $this->selectedContact = null;
     }
 
+    public function deleteContact() {
+        if ($this->selectedContact) {
+            $this->selectedContact->delete();
+            $this->closeModal();
+        }
+    }
 }

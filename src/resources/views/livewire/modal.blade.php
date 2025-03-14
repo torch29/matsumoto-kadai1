@@ -70,11 +70,10 @@
             @endforeach
 
 {{--モーダルウィンドウ--}}
-    @if($showModal)
+    @if($showModal && $selectedContact)
     <div class="modal-dialog">
         <table class="modal__content">
             <button wire:click="closeModal()" type="button">×</button>
-                @if($selectedContact)
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">お名前</th>
                     <td class="modal-table__item">
@@ -110,20 +109,10 @@
                     <th class="modal-table__heading">お問い合わせ内容</th>
                     <td class="modal-table__item">{{ $selectedContact->detail }}</td>
                 </tr>
-                @endif
             </table>
-            <form action="/delete" class="form" method="post">
-            @method('delete')
-            @csrf
-                <div class="delete__button">
-                    <input type="hidden" name="id">
-                    <button class="delete__button-submit" type="submit">削除</button>
-                </div>
-            </form>
-        </div>
-
-    @endif
-
+                <button wire:click="deleteContact" class="delete__button-submit" type="button">削除</button>
+            </div>
+        @endif
         </table>
     </div>
 </div>
