@@ -57,7 +57,11 @@ class ContactRequest extends FormRequest
 
             // どれか１つでも6桁以上の場合
             if ((strlen($tel1) > 5) || (strlen($tel2) > 5) || (strlen($tel3) > 5)) {
-            $validator->errors()->add('tel_group', '電話番号は5桁までの数字で入力してください');
+                $validator->errors()->add('tel_group', '電話番号は5桁までの数字で入力してください');
+            }
+
+            if ((!is_numeric($tel1)) || (!is_numeric($tel2)) || (!is_numeric($tel3))) {
+                $validator->errors()->add('tel_group', '電話番号は5桁までの数字で入力してください');
             }
         });
     }
