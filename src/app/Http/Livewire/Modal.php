@@ -18,6 +18,7 @@ class Modal extends Component
     public $gender_select;
 
     use WithPagination;
+        protected $paginationTheme = 'bootstrap';
 
     //public $contacts;
 
@@ -33,7 +34,7 @@ class Modal extends Component
         ->GenderSearch('gender_select')
         ->Paginate(7);
         */
-        
+
         /*$this->contacts = Contact::with('category')*/
 
         $contacts = Contact::with('category')->KeywordSearch($this->keyword)

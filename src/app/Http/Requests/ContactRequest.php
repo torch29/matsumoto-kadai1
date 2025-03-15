@@ -60,6 +60,7 @@ class ContactRequest extends FormRequest
                 $validator->errors()->add('tel_group', '電話番号は5桁までの数字で入力してください');
             }
 
+            // 数値かどうか
             if ((!is_numeric($tel1)) || (!is_numeric($tel2)) || (!is_numeric($tel3))) {
                 $validator->errors()->add('tel_group', '電話番号は5桁までの数字で入力してください');
             }

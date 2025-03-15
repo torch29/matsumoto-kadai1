@@ -18,3 +18,8 @@ a {
     display: flex;
     margin-left: 0;
 }
+
+body {
+    color: #7F7268;
+    font-size: 14px;
+}

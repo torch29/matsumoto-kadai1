@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+<link rel="stylesheet" href="{{ asset('css/modal.css') }}">
 @endsection
 
 @section('admin')
@@ -10,7 +11,6 @@
     @csrf
         <button class="header-utilities__button-submit" type="submit">logout</button>
     </form>
-    <h3>てすと</h3>
 </div>
 @endsection
 
@@ -21,7 +21,7 @@ adminに最初書いてた検索フォーム（adminsubに保存）
     <form action="/contacts/search" class="search-form" method="get">
     @csrf
         <div class="search-form__item">
-            <input type="text" class="search-form__item-input" name="keyword" value="{{ old('keyword') }}">
+            <input type="text" class="search-form__item-input" name="keyword" value="{{ old('keyword') }}"  placeholder="名前やメールアドレスを入力してください">
             <select name="gender_select" class="search-form__item-select">
                 <option value="" selected>性別</option>
                 <option value="9">全て</option>
@@ -37,7 +37,7 @@ adminに最初書いてた検索フォーム（adminsubに保存）
                         <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
                     @endforeach
             </select>
-            <input type="date" name="date" value="年/月/日">
+            <input type="date" name="date" class="search-form__item-select" value="年/月/日">
         </div>
         <div class="search-form__button">
             <button class="search-form__button-search">検索</button>
@@ -50,8 +50,7 @@ adminに最初書いてた検索フォーム（adminsubに保存）
             <button class="export-button__submit">エクスポート</button>
         </div>
         <div class="nav__page-link">
-        <p>ページネーション</p>
-        {{ $contacts->links() }}
+            {{ $contacts->links('vendor.pagination.admin-bootstrap') }}
         </div>
     </div>
 
@@ -59,10 +58,10 @@ adminsubの問い合わせ内容テーブル表示
     <div class="contact-table__content">
         <table class="contact-table">
             <tr class="contact-table__row">
-                <th class="contact-table__header">お名前</th>
+                <th class="contact-table__header" colspan="2">お名前</th>
                 <th class="contact-table__header">性別</th>
                 <th class="contact-table__header">メールアドレス</th>
-                <th class="contact-table__header">お問い合わせの種類</th>
+                <th class="contact-table__header" colspan="2">お問い合わせの種類</th>
             </tr>
             @foreach ($contacts as $contact)
             <tr class="contact-table__row">
