@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
 @endsection
 
-@section('admin')
+@section('auth')
 <div class="header-utilities">
     <form action="/logout" class="header-utilities__button" method="post">
     @csrf
@@ -15,9 +15,12 @@
 @endsection
 
 @section('content')
-<div>
+<div class="admin__content">
+    <div class="section__title">
+        <h2>Admin</h2>
+    </div>
 
-adminに最初書いてた検索フォーム（adminsubに保存）
+adminに最初書いてた検索フォーム
     <form action="/contacts/search" class="search-form" method="get">
     @csrf
         <div class="search-form__item">
@@ -54,7 +57,7 @@ adminに最初書いてた検索フォーム（adminsubに保存）
         </div>
     </div>
 
-adminsubの問い合わせ内容テーブル表示
+adminsの問い合わせ内容テーブル
     <div class="contact-table__content">
         <table class="contact-table">
             <tr class="contact-table__row">

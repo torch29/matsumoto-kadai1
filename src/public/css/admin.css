@@ -4,12 +4,16 @@
 
 .section__title {
     text-align: center;
+    font-family: "Cardo", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .header-utilities__button-submit {
     background-color: #f6f6f6;
     color: #D9C5B5;
     border: #D9C5B5 1px solid;
+    cursor: pointer;
 }
 
 .search-form {
@@ -62,16 +66,19 @@
 .search-form__button-reset {
     width: 70px;
     height: 30px;
+    cursor: pointer;
 }
 .search-form__button-search {
     background-color: #82766A;
     color: #fff;
     border: none;
+    cursor: pointer;
 }
 .search-form__button-reset {
     background-color: #D9C5B5;
     color: #fff;
     border: none;
+    cursor: pointer;
 }
 
 .nav-area {
@@ -85,6 +92,7 @@
     background-color: #EDE9E6;
     border: none;
     color: #7F7268;
+    cursor: pointer;
 }
 
 svg.w-5.h-5 {
@@ -93,6 +101,7 @@ svg.w-5.h-5 {
 }
 .pagination {
     display: flex;
+    font-size: 10px;
 }
 li :not(a) {
     margin: 0;
@@ -157,5 +166,6 @@ li a {
     border: #D9C5B5 1px solid;
     padding: 5px 15px;
     background-color: #fff;
+    cursor: pointer;
 }
 

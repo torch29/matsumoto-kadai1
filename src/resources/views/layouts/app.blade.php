@@ -6,6 +6,9 @@
     <title>FashionablyLate</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
     </head>
     @yield('css')
     @livewireStyles
@@ -18,7 +21,7 @@
         <div class="header__logo">
             <p>FashionablyLate</p>
         </div>
-        @yield('admin')
+        @yield('auth')
     </div>
 </header>
 

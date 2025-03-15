@@ -13,10 +13,11 @@
         <div class="thanks__content-inner">
             <div class="thanks__message">
                 <h2>お問い合わせありがとうございました</h2>
+                <div class="home-button">
+                    <button class="home-button-submit" type="button" onclick="location.href='/'">HOME</button>
+                </div>
             </div>
-            <div class="home-button">
-                <button class="home-button--submit" type="button" onclick="location.href='/'">HOME</button>
-            </div>
+            <div class="bg__text">Thankyou</div>
         </div>
     </div>
 </body>

@@ -1,3 +1,7 @@
+body {
+    background-color: #F2ECE7;
+}
+
 .register__content,
 .login__content {
     max-width: 100%;
@@ -5,25 +9,73 @@
 
 .section__title {
     text-align: center;
+    font-family: "Cardo", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header-utilities {
+    display: flex;
+    margin-left: 0;
+}
+.header-utilities__button {
+    width: 70px;
+    height: 25px;
+    margin: 0 auto;
+    text-align: center;
+    border: #9C8F82 1px solid;
+    color: #9C8F82;
+    cursor: pointer;
 }
 
 .register-form,
 .login-form {
-    width: 70%;
-    margin: 0 auto;
+    width: 55%;
+    margin: 25px auto;
+    background-color: #fff;
+    border: #7F7268 1px solid;
+    padding: 50px 70px;
 }
 
+.register-form__item,
+.login-form__item {
+    margin: 10px auto 25px;
+}
 
+.register-form__item-label,
+.login-form__item-label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+.register-form__item-input,
+.login-form__item-input {
+    height: 35px;
+    width: 100%;
+    background-color: #F5F5F5;
+    border: none;
+    color: #9C8F82;
+    padding-left: 10px;
+    display: block;
+    outline: none;
+}
+
+.form__error {
+    color: #BF370D;
+}
 
 .register-form__button,
 .login-form__button {
     display: flex;
-    width: 100px;
-    height: 40px;
-    margin: 0 auto;
+    justify-content: center;
+    margin: 15px;
 }
-
 .register-form__button-submit,
 .login-form__button-submit {
-    width: 100%;
+    text-align: center;
+    background-color: #82766A;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
 }

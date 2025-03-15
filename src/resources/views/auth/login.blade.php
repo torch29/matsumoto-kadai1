@@ -4,9 +4,9 @@
 <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 @endsection
 
-@section('admin')
+@section('auth')
     <div class="header-utilities">
-        <button class="header-utilities__button-link" type="button" onclick="location.href='/register'">register</button>
+        <button class="header-utilities__button" type="button" onclick="location.href='/register'">register</button>
     </div>
 @endsection
 
@@ -20,7 +20,7 @@
     @csrf
         <div class="login-form__item">
             <label for="email" class="login-form__item-label">メールアドレス</label>
-            <input type="email" name="email" id="email" class="login-form__item-input" value="{{ old('email') }}">
+            <input type="email" name="email" id="email" class="login-form__item-input" value="{{ old('email') }}" placeholder="例: test@example.com">
             <div class="form__error">
                 @error('email')
                 {{ $message }}
@@ -29,7 +29,7 @@
         </div>
         <div class="login-form__item">
             <label for="password" class="login-form__item-label">パスワード</label>
-            <input type="password" name="password" id="password" class="login-form__item-input">
+            <input type="password" name="password" id="password" class="login-form__item-input" placeholder="例: coachtech1234">
             <div class="form__error">
                 @error('password')
                 {{ $message }}
@@ -40,18 +40,5 @@
             <button class="login-form__button-submit" type="submit">ログイン</button>
         </div>
     </form>
-
-{{--エラーあれば表示、確認用、後で消す--}}
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-
 </div>
 @endsection
