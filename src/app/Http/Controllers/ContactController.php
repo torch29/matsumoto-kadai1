@@ -60,7 +60,7 @@ class ContactController extends Controller
 
 
     public function search(Request $request) {
-    // リクエスト内容を確認
+    // リクエスト内容を確認するデバッグ
     //dd($request->all());
 
     $contacts = Contact::with('category')

@@ -19,12 +19,23 @@ class Modal extends Component
 
     use WithPagination;
 
-    //private $contacts;
+    //public $contacts;
 
-    public function search()
+    public function wireSearch()
     {
-
+        //dd($this->keyword, $this->date, $this->category_select, $this->gender_select);
+        
+        /*
+        $contacts = Contact::with('category')
+        ->KeywordSearch('keyword')
+        ->DateSearch('date')
+        ->CategorySearch('category_select')
+        ->GenderSearch('gender_select')
+        ->Paginate(7);
+        */
+        
         /*$this->contacts = Contact::with('category')*/
+
         $contacts = Contact::with('category')->KeywordSearch($this->keyword)
         ->DateSearch($this->date)
         ->CategorySearch($this->category_select)

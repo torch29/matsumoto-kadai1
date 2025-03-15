@@ -17,7 +17,6 @@
 @section('content')
 <div>
 
-
 adminに最初書いてた検索フォーム（adminsubに保存）
     <form action="/contacts/search" class="search-form" method="get">
     @csrf
@@ -89,41 +88,6 @@ adminsubの問い合わせ内容テーブル表示
             @endforeach
         </table>
     </div>
-</div>
-
-
-<div>
-    ///adminに移動したmodalに書くべき検索フォーム
-    <div>
-    <form action="/contacts/search" class="search-form" method="get">
-    {{--<form wire:submit.prevent="search" class="search-form">--}}
-        @csrf
-        <div class="search-form__item">
-            <input type="text" class="search-form__item-input" wire:model="keyword" value="{{ old('keyword') }}">
-            <select wire:model="gender_select" class="search-form__item-select">
-                <option value="" selected>性別</option>
-                <option value="9">全て</option>
-                    @foreach ($genders as $key => $val)
-                    {{--@foreach ($genders as $gender)--}}
-                        {{--<option value="{{ $gender }}">{{ $gender }}</option>--}}
-                        <option value="{{ $key }}">{{ $val }}</option>
-                    @endforeach
-            </select>
-            <select wire:model="category_select" class="search-form__item-select">
-                <option value="" selected>お問い合わせの種類</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
-                    @endforeach
-            </select>
-            <input type="date" wire:model="date" value="年/月/日">
-        </div>
-        <div class="search-form__button">
-            <button class="search-form__button-search" type="submit">検索</button>
-            <button class="search-form__button-reset" type="reset" type="button" onclick="location.href='/admin'">リセット</button>
-            
-            {{--<button type="button" class="search-form__button-reset" wire:click="resetSearch">リセット</button>--}}
-        </div>
-</form>
 </div>
 
 @endsection
