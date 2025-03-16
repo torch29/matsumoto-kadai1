@@ -9,8 +9,6 @@
                 <option value="" selected>性別</option>
                 <option value="9">全て</option>
                     @foreach ($genders as $key => $val)
-                    {{--@foreach ($genders as $gender)--}}
-                        {{--<option value="{{ $gender }}">{{ $gender }}</option>--}}
                         <option value="{{ $key }}">{{ $val }}</option>
                     @endforeach
             </select>
@@ -25,7 +23,6 @@
         <div class="search-form__button">
             <button class="search-form__button-search" type="submit">検索</button>
             <button class="search-form__button-reset" type="reset" type="button" onclick="location.href='/admin'">リセット</button>
-            
             {{--<button type="button" class="search-form__button-reset" wire:click="resetSearch">リセット</button>--}}
         </div>
     </form>
@@ -67,7 +64,6 @@
                 </td>
                 <td class="contact-table__item">
                     <button wire:click="openModal({{ $contact->id }})" type="button" class="contact-table__item-button">詳細</button>
-
                 </td>
             </tr>
             @endforeach
@@ -119,6 +115,5 @@
         </div>
     </div>
     @endif
-</table>
-</div>
+    </table>
 </div>

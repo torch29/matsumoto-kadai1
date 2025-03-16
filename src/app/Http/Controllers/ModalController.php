@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -21,3 +21,4 @@ class ModalController extends Controller
         return view('livewire.testmodal', compact('contacts', 'genders', 'categories'));
     }
 }
+*/

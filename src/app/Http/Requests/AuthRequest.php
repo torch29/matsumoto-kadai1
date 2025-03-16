@@ -26,10 +26,6 @@ class AuthRequest extends LoginRequest
     {
         $rules = parent::rules();
 
-        //if ($this->routeIs('register')) {
-        //    $rules['name'] = ['required'];
-        //}
-
         $rules['name'] = ['required','sometimes'];
         $rules['email'] = ['required', 'email'];
         $rules['password'] = ['required'];
@@ -37,13 +33,6 @@ class AuthRequest extends LoginRequest
         return $rules;
     }
 
-    /*protected function prepareForValidation()
-    {
-        // 登録時に name フィールドを必須にする
-        if ($this->routeIs('register') && !$this->has('name')) {
-            $this->merge(['name' => '']);
-        }
-    }*/
 
     public function messages() {
         return [
