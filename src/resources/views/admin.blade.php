@@ -20,7 +20,7 @@
         <h2>Admin</h2>
     </div>
 
-adminに最初書いてた検索フォーム
+{{--adminに最初書いてた検索フォーム--}}
     <form action="/contacts/search" class="search-form" method="get">
     @csrf
         <div class="search-form__item">
@@ -55,7 +55,7 @@ adminに最初書いてた検索フォーム
         </div>
     </div>
 
-adminsの問い合わせ内容テーブル
+{{--adminsの問い合わせ内容テーブル--}}
     <div class="contact-table__content">
         <table class="contact-table">
             <tr class="contact-table__row">

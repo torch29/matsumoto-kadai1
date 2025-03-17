@@ -1,5 +1,5 @@
 <div>
-    ここからmodalの表示
+    {{--ここからmodalの表示--}}
     {{--<form action="/contacts/search" class="search-form" method="get">--}}
     <form wire:submit.prevent="wireSearch" class="search-form">
         @csrf
