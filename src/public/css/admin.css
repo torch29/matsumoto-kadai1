@@ -81,6 +81,27 @@
     border: none;
     cursor: pointer;
 }
+.select__wrapper {
+    position: relative;
+}
+.select__wrapper::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    border-color: #D9C5B5 transparent transparent transparent;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+}
+select {
+    appearance: none;
+}
+.select__wrapper input::-webkit-calendar-picker-indicator {
+    display: none;
+}
 
 .nav-area {
     width: 80%;;

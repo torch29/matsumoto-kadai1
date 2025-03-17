@@ -5,20 +5,26 @@
         @csrf
         <div class="search-form__item">
             <input type="text" class="search-form__item-input" wire:model="keyword" value="{{ old('keyword') }}" placeholder="名前やメールアドレスを入力してください">
-            <select wire:model="gender_select" class="search-form__item-select">
-                <option value="" selected>性別</option>
-                <option value="9">全て</option>
-                    @foreach ($genders as $key => $val)
-                        <option value="{{ $key }}">{{ $val }}</option>
-                    @endforeach
-            </select>
-            <select wire:model="category_select" class="search-form__item-select">
-                <option value="" selected>お問い合わせの種類</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
-                    @endforeach
-            </select>
-            <input type="date" wire:model="date" class="search-form__item-select" value="年/月/日">
+            <div class="select__wrapper">
+                <select wire:model="gender_select" class="search-form__item-select">
+                    <option value="" selected>性別</option>
+                    <option value="9">全て</option>
+                        @foreach ($genders as $key => $val)
+                            <option value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                </select>
+            </div>
+            <div class="select__wrapper">
+                <select wire:model="category_select" class="search-form__item-select">
+                    <option value="" selected>お問い合わせの種類</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                        @endforeach
+                </select>
+                </div>
+            <div class="select__wrapper">
+                <input type="date" wire:model="date" class="search-form__item-select" value="年/月/日">
+            </div>
         </div>
         <div class="search-form__button">
             <button class="search-form__button-search" type="submit">検索</button>
