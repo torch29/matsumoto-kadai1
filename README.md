@@ -5,7 +5,7 @@
 ### Docker ビルド
 
 1. git clone git@github.com:torch29/matsumoto-kadai1.git
-2. docker-compose up -d --buiild
+2. docker-compose up -d --build
 
 ### Laravel 環境構築
 

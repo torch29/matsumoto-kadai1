@@ -97,7 +97,3 @@
 </div>
 
 @endsection
-
-@section('modal')
-<livewire:modal>
-@endsection
