@@ -24,6 +24,8 @@ class Modal extends Component
     public function wireSearch()
     {
 
+        //$this -> contacts
+
         $contacts = Contact::with('category')->KeywordSearch($this->keyword)
         ->DateSearch($this->date)
         ->CategorySearch($this->category_select)
