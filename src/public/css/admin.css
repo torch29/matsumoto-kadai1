@@ -61,7 +61,6 @@
     width: 160px;
     display: flex;
     justify-content: space-between;
-    justify-content: space-between;
 }
 .search-form__button-search,
 .search-form__button-reset {
@@ -144,10 +143,7 @@ li:last-child {
 li a {
     margin: 0;
     padding: 4px 10px;
-    border-right: #8B7968 1px solid;
-    border-left: #8B7968 1px solid;
-    border-bottom: #8B7968 1px solid;
-    border-top: #8B7968 1px solid;
+    border: #8B7968 1px solid;
     background-color: #fff;
     color: #8B7968;
 }
