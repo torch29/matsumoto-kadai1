@@ -19,8 +19,10 @@
             </div>
             <div class="contact-form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="last_name" id="name" placeholder="例：山田" value="{{ old('last_name') }}" class="form__input--text--name">
-                    <input type="text" name="first_name" placeholder="例：太郎" value="{{ old('first_name') }}" class="form__input--text--name">
+                    <div class="form__input--text__namegroup">
+                        <input type="text" name="last_name" id="name" placeholder="例：山田" value="{{ old('last_name') }}" class="form__input--text--name">
+                        <input type="text" name="first_name" placeholder="例：太郎" value="{{ old('first_name') }}" class="form__input--text--name">
+                    </div>
                 </div>
                 <div class="form__error">
                     @error('last_name')

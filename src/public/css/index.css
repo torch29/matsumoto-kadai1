@@ -41,8 +41,13 @@
     padding-left: 10px;
 }
 .form__input--text--name {
-    width: 200px;
-    margin-right: 20px;
+    width: 45%;
+}
+
+.form__input--text__namegroup {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .radio-btn-area {

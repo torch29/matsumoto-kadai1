@@ -29,6 +29,7 @@ Route::get('/login', [AuthController::class, 'signin'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/modal', Modal::class);
+Route::get('/livewire/message/modal', Modal::class);
 
 //登録・ログイン機能
 Route::post('/register', [RegisteredUserController::class, 'store']);
