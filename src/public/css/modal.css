@@ -46,6 +46,10 @@ svg.w-5.h-5 {
 .modal-dialog__button-close {
     color: #7F7268;
     background-color: #fff;
+    border-radius: 50%;
+    border: #7F7268 1px solid;
+    appearance: none;
+    cursor: pointer;
 }
 
 .delete__button {
