@@ -29,7 +29,7 @@ Route::get('/login', [AuthController::class, 'signin'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/modal', Modal::class);
-Route::get('/livewire/message/modal', Modal::class);
+Route::get('/livewire/message/{name}', Modal::class);
 
 //登録・ログイン機能
 Route::post('/register', [RegisteredUserController::class, 'store']);
@@ -41,4 +41,4 @@ Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
 
 //検索
-Route::get('/contacts/search', [ContactController::class, 'search']);
+Route::get('/admin', [ContactController::class, 'search']);

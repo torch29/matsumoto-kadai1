@@ -1,10 +1,10 @@
 <div>
     {{--ここからmodalの表示--}}
-    {{--<form action="/contacts/search" class="search-form" method="get">--}}
-    <form wire:submit.prevent="wireSearch" class="search-form">
+    <form action="/admin" class="search-form" method="get">
+    {{--<form wire:submit.prevent="wireSearch" class="search-form">--}}
         @csrf
         <div class="search-form__item">
-            <input type="text" class="search-form__item-input" wire:model="keyword" value="{{ old('keyword') }}" placeholder="名前やメールアドレスを入力してください">
+            <input type="text" class="search-form__item-input" name="keyword" value="" placeholder="名前やメールアドレスを入力してください">
             <div class="select__wrapper">
                 <select wire:model="gender_select" class="search-form__item-select">
                     <option value="" selected>性別</option>
@@ -73,14 +73,15 @@
                 </td>
             </tr>
             @endforeach
+        </table>
 
 {{--モーダルウィンドウ--}}
     @if($showModal && $selectedContact)
     <div class="modal-dialog">
+        <div class="modal-dialog__button">
+            <button wire:click="closeModal()" type="button" class="modal-dialog__button-close">×</button>
+        </div>
         <table class="modal__content">
-            <div class="modal-dialog__button">
-                <button wire:click="closeModal()" type="button" class="modal-dialog__button-close">×</button>
-            </div>
             <tr class="modal-table__row">
                 <th class="modal-table__heading">お名前</th>
                 <td class="modal-table__item">
@@ -121,5 +122,5 @@
         </div>
     </div>
     @endif
-    </table>
+    
 </div>

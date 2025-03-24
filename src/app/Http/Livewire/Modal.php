@@ -16,11 +16,12 @@ class Modal extends Component
     public $date;
     public $category_select;
     public $gender_select;
+    //public $contacts;
 
     use WithPagination;
         protected $paginationTheme = 'bootstrap';
 
-
+    /*
     public function wireSearch()
     {
 
@@ -33,11 +34,29 @@ class Modal extends Component
         ->paginate(7);
 
     }
+    */
 
-        public function render()
+        public function render() //コントローラー 表示するときによばれる プロパティが変わるとよばれる
     {
 
-        $contacts = Contact::with('category')->Paginate(7);
+        if ($this->keyword) {
+            $contacts = Contact::with('category')->KeywordSearch($this->keyword)->Paginate(7);
+        } else {
+            $contacts = Contact::with('category')->Paginate(7);
+        }
+
+        //20250324 以下おためし追記 Date,Gender,Category Search
+        if ($this->date) {
+            $contacts = Contact::with('category')->DateSearch($this->date)->Paginate(7);
+        } elseif($this->gender_select) {
+            $contacts = Contact::with('category')->GenderSearch($this->gender_select)->Paginate(7);
+        } elseif($this->category_select) {
+            $contacts = Contact::with('category')->CategorySearch($this->category_select)->Paginate(7);
+        } else {
+            $contacts = Contact::with('category')->Paginate(7);
+        }
+        //お試し追記ここまで
+
         $categories = Category::all();
         $genders = [
             1 => '男性',
@@ -45,7 +64,9 @@ class Modal extends Component
             3 => 'その他'
         ];
 
-        return view('livewire.modal', compact('contacts', 'genders', 'categories'));
+        $keywords = $this->keyword;
+
+        return view('livewire.modal', compact('contacts', 'genders', 'categories', 'keywords'));
     }
 
     public function openModal($contactId)

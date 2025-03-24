@@ -21,10 +21,10 @@
     </div>
 
 {{--adminに最初書いてた検索フォーム--}}
-    <form action="/contacts/search" class="search-form" method="get">
+    <form action="/admin" class="search-form" method="get">
     @csrf
         <div class="search-form__item">
-            <input type="text" class="search-form__item-input" name="keyword" value="{{ old('keyword') }}"  placeholder="名前やメールアドレスを入力してください">
+            <input type="text" class="search-form__item-input" name="keyword" value=""  placeholder="名前やメールアドレスを入力してください">
                 <div class="select__wrapper">
                     <select name="gender_select" class="search-form__item-select">
                         <option value="" selected>性別</option>
@@ -88,7 +88,88 @@
                     {{ $contact->category->content }}
                 </td>
                 <td class="contact-table__item">
+
+{{-- ここから追記 bootstrapによるmodal
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                    </button>
+
+                    <div class="modal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Modal body text goes here.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+追記ここまで --}}
+
+{{--CSSでのモーダルテスト追記--}}
+                <a href="#modal" class="contact-table__detail-button">詳細</button>
+                    <div class="test-modal" id="modal">
+                        <div class="test-modal__wrapper">
+                            <a href="#" class="test-modal__close-button">×</a>
+                            <div class="test-modal__content--detail">
+        {{--モーダルダイアログの内容ここから--}}
+                                <table class="modal__content">
+           {{-- @foreach ($selectedContacts as $selectedContact) --}}
+            <tr class="modal-table__row">
+                <th class="modal-table__heading">お名前</th>
+                <td class="modal-table__item">
+                    {{ $contact->last_name . ' ' . $contact->first_name }}
+                </td>
+            </tr>
+            <tr class="modal-table__row">
+                <th class="modal-table__heading">性別</th>
+                <td class="modal-table__item">{{ $genders[$contact->gender] }}</td>
+            </tr>
+            <tr class="modal-table__row">
+                <th class="modal-table__heading">メールアドレス</th>
+                <td class="modal-table__item">{{ $contact->email }}</td>
+            </tr>
+            <tr class="modal-table__row">
+                <th class="modal-table__heading">電話番号</th>
+                <td class="modal-table__item">{{ $contact->tel }}</td>
+            </tr>
+            <tr class="modal-table__row">
+                <th class="modal-table__heading">住所</th>
+                <td class="modal-table__item">{{ $contact->address }}</td>
+            </tr>
+            <tr class="modal-table__row">
+                <th class="modal-table__heading">建物名</th>
+                <td class="modal-table__item">{{ $contact->building }}</td>
+            </tr>
+            <tr class="modal-table__row">
+                <th class="modal-table__heading">お問い合わせの種類</th>
+                <td class="modal-table__item">{{ $contact->category->content }}</td>
+            </tr>
+            <tr class="modal-table__row">
+                <th class="modal-table__heading">お問い合わせ内容</th>
+                <td class="modal-table__item">{{ $contact->detail }}</td>
+            </tr>
+       {{-- @endforeach --}}
+        </table>
+        {{--モーダルダイアログの内容ここまで--}}
+                            </div>
+                        </div>
+                    </div>
+{{--CSSでのモーダルテスト追記ここまで--}}
+
+
+{{--元のボタン
                     <button class="contact-table__item-button">詳細</button>
+
+--}}
                 </td>
             </tr>
             @endforeach
@@ -96,4 +177,8 @@
     </div>
 </div>
 
+@endsection
+
+@section('modal')
+<livewire:modal>
 @endsection

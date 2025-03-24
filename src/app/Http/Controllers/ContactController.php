@@ -9,10 +9,17 @@ use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
+    //public $selectedContact;
+
     public function index() {
         $contacts = Contact::with('category')->get();
         $categories = Category::all();
-        return view('index', compact('contacts', 'categories'));
+
+        //追記
+        $selectedContacts = Contact::with('category')->find($id);
+
+        return view('index', compact('contacts', 'categories', 'selectedContacts'));
+
     }
 
     public function confirm(ContactRequest $request) {
