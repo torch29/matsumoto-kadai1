@@ -15,10 +15,7 @@ class ContactController extends Controller
         $contacts = Contact::with('category')->get();
         $categories = Category::all();
 
-        //追記
-        $selectedContacts = Contact::with('category')->find($id);
-
-        return view('index', compact('contacts', 'categories', 'selectedContacts'));
+        return view('index', compact('contacts', 'categories'));
 
     }
 
@@ -64,4 +61,10 @@ class ContactController extends Controller
 
     return view('admin', compact('contacts', 'categories', 'genders'));
 }
+
+    public function delete(Request $request) {
+        Contact::find($request->id)->delete();
+        return redirect('/admin');
+    }
+
 }

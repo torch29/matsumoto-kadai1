@@ -12,10 +12,10 @@ class Modal extends Component
     public $showModal = false;
     public $selectedContact;
 
-    public $keyword;
-    public $date;
-    public $category_select;
-    public $gender_select;
+    //public $keyword;
+    //public $date;
+    //public $category_select;
+    //public $gender_select;
     //public $contacts;
 
     use WithPagination;
@@ -39,6 +39,7 @@ class Modal extends Component
         public function render() //コントローラー 表示するときによばれる プロパティが変わるとよばれる
     {
 
+        /*
         if ($this->keyword) {
             $contacts = Contact::with('category')->KeywordSearch($this->keyword)->Paginate(7);
         } else {
@@ -56,6 +57,32 @@ class Modal extends Component
             $contacts = Contact::with('category')->Paginate(7);
         }
         //お試し追記ここまで
+        */
+
+        $keyword = request()->keyword;
+        $gender_select = request()->gender_select;
+        $category_select = request()->category_select;
+        $date = request()->date;
+
+        if (!$keyword && !$gender_select && !$category_select && !$date) {
+            $query = Contact::with('category');
+        } else {
+            $query = Contact::query();
+            if ($keyword) {
+                $query->KeywordSearch($keyword);
+            }
+            if ($gender_select) {
+                $query->GenderSearch($gender_select);
+            }
+            if ($category_select) {
+                $query->CategorySearch($category_select);
+            }
+            if ($date) {
+                $query->DateSearch($date);
+            }
+        }
+
+        $contacts = $query->paginate(7)->withQueryString()->withPath('/admin');
 
         $categories = Category::all();
         $genders = [
@@ -64,9 +91,7 @@ class Modal extends Component
             3 => 'その他'
         ];
 
-        $keywords = $this->keyword;
-
-        return view('livewire.modal', compact('contacts', 'genders', 'categories', 'keywords'));
+        return view('livewire.modal', compact('contacts', 'genders', 'categories', 'keyword', 'gender_select', 'category_select', 'date'));
     }
 
     public function openModal($contactId)

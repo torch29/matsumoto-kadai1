@@ -118,7 +118,6 @@
         <div class="contact-form__group">
             <div class="form__group-title">
                 <label for="building" class="form__label--item">建物名</label>
-                <p class="form__label--required">※</p>
             </div>
             <div class="contact-form__group-content">
                 <div class="form__input--text">
