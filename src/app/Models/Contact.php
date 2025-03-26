@@ -14,6 +14,10 @@ class Contact extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function channels() {
+        return $this->belongsToMany(Channel::class)->withTimestamps();
+    }
+
     protected $fillable = [
         'category_id',
         'last_name',

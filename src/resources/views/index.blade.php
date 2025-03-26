@@ -169,6 +169,19 @@
                 </div>
             </div>
         </div>
+        <div class="contact-form__group">
+            <div class="form__group-title">
+                <label for="detail" class="form__label--item">アンケート</label>
+            </div>
+            <div class="contact-form__group-content">
+                <div class="form__input--text">
+                    @foreach ($channels as $channel)
+                    <input type="checkbox" name="channel_ids[]" value="{{ $channel->id }}" id="{{ $channel->id }}">
+                        <label for="{{ $channel->id }}">{{ $channel['content'] }}</label>
+                    @endforeach
+                </div>
+            </div>
+        </div>
         <div class="form__button">
             <button class="form__button-submit" type="submit">確認画面</button>
         </div>

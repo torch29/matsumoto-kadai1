@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\Channel; //追加
 use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
@@ -14,8 +15,9 @@ class ContactController extends Controller
     public function index() {
         $contacts = Contact::with('category')->get();
         $categories = Category::all();
+        $channels = Channel::all(); //追加
 
-        return view('index', compact('contacts', 'categories'));
+        return view('index', compact('contacts', 'categories', 'channels'));
 
     }
 
@@ -30,8 +32,9 @@ class ContactController extends Controller
             2 => '女性',
             3 => 'その他'
         ];
+        $channel = Channel::find($request->channel_id);
 
-        return view('confirm', compact('contact', 'category', 'genders'));
+        return view('confirm', compact('contact', 'category', 'genders', 'channel'));
     }
 
     public function store(Request $request) {
