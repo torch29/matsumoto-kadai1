@@ -1,12 +1,12 @@
 <div>
     {{--ここからmodalの表示--}}
-    <form action="/admin" class="search-form" method="get">
-    {{--<form wire:submit.prevent="wireSearch" class="search-form">--}}
+    {{--<form action="/admin" class="search-form" method="get">--}}
+    <form wire:submit.prevent="wireSearch" class="search-form">
         @csrf
         <div class="search-form__item">
-            <input type="text" class="search-form__item-input" name="keyword" value="{{ $keyword }}" placeholder="名前やメールアドレスを入力してください">
+            <input type="text" class="search-form__item-input" wire:model.defer="keyword" value="{{ $keyword }}" placeholder="名前やメールアドレスを入力してください">
             <div class="select__wrapper">
-                <select name="gender_select" class="search-form__item-select">
+                <select wire:model.defer="gender_select" class="search-form__item-select">
                     <option value="" selected>性別</option>
                     <option value="9">全て</option>
                         @foreach ($genders as $key => $val)
@@ -15,7 +15,7 @@
                 </select>
             </div>
             <div class="select__wrapper">
-                <select name="category_select" class="search-form__item-select">
+                <select wire:model.defer="category_select" class="search-form__item-select">
                     <option value="" selected>お問い合わせの種類</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category['id'] }}" {{ $category['id'] == $category_select ? 'selected' : '' }}>{{ $category['content'] }}</option>
@@ -23,7 +23,7 @@
                 </select>
                 </div>
             <div class="select__wrapper">
-                <input type="date" name="date" class="search-form__item-select" value="{{ $date }}">
+                <input type="date" wire:model.defer="date" class="search-form__item-select" value="{{ $date }}">
             </div>
         </div>
         <div class="search-form__button">
@@ -38,10 +38,11 @@
             <button class="export-button__submit">エクスポート</button>
         </div>
         <div class="nav__page-link">
-        {{ $contacts->links('vendor.pagination.admin-bootstrap') }}
+        {{ $contacts->links('vendor.livewire.bootstrap') }}
+        {{--リアルタイムでない検索のとき つかう $contacts->links('vendor.pagination.admin-bootstrap') --}}
         </div>
     </div>
-    
+
 {{--問い合わせ内容テーブル表示--}}
     <div class="contact-table__content">
         <table class="contact-table">
