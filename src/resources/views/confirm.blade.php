@@ -66,6 +66,18 @@
                         <input type="text" name="detail" value="{{ $contact['detail'] }}" readonly>
                     </td>
                 </tr>
+                <tr class="confirm-table__row">
+                    <th class="confirm-table__heading"></th>
+                    <td class="confirm-table__item">
+                        {{-- アンケートの名称表示用 --}}
+                        <input type="text" value="{{implode('，', $channelNames)}}" readonly>
+
+                        @foreach($contact['channel_ids'] as $channel_id)
+                            <input type="hidden" name="channel_ids[]" value="{{ $channel_id }}">
+                        {{-- dump($channel_id) --}}
+                        @endforeach
+                    </td>
+                </tr>
             </table>
         </div>
         <div class="confirm__button">

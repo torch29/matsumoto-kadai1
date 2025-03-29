@@ -25,22 +25,43 @@ class ContactController extends Controller
 
         $category = Category::find($request->category_id);
         $tel = $request -> tel1 . $request -> tel2 . $request -> tel3;
-        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'address', 'building', 'category_id', 'detail']);
+        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'address', 'building', 'category_id', 'detail', 'channel_ids']);
         $contact['tel'] = $tel;
         $genders = [
             1 => '男性',
             2 => '女性',
             3 => 'その他'
         ];
-        $channel = Channel::find($request->channel_id);
+        //間違い $channel_ids = $request->input('channel_ids');
+        //間違い $cn = Channel::where('id', $request)->get();
 
-        return view('confirm', compact('contact', 'category', 'genders', 'channel'));
+        //間違い $ch_id = Channel::where('channel_id', $request)->get('id');
+
+        /* 間違い
+        if(is_array($request->input('channel_ids'))){
+            $query->where(function($q) use($request){
+                foreach($request->input('channel_ids') as $channel_ids){
+                    $q->orWhere('channel_ids', $channel_ids);
+                }
+            });
+        }
+        */
+
+        $channelNames = Channel::WhereIn('id', $request->input('channel_ids'))->pluck('content')->toArray();
+
+        return view('confirm', compact('contact', 'category', 'genders', 'channelNames'));
     }
 
     public function store(Request $request) {
-        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail']);
-        Contact::create($contact);
+        $contactData = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail']);
+        $contact = Contact::create($contactData);
 
+        if($request->has('channel_ids')) {
+            $contact->channels()->attach($request->input('channel_ids'));
+        }
+
+        //dd($request->all());
+        //dd($contact);
         return view('thanks');
     }
 

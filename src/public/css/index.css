@@ -140,6 +140,15 @@
     color: rgba(223, 42, 94, 0.851);
 }
 
+.form__item-checkbox-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form__item-checkbox-label:not(:last-child) {
+    padding-right: 7px;
+}
+
 .form__error {
     color: rgba(223, 42, 94, 0.851);
 }

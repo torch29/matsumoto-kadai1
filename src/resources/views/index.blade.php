@@ -171,13 +171,16 @@
         </div>
         <div class="contact-form__group">
             <div class="form__group-title">
-                <label for="detail" class="form__label--item">アンケート</label>
+                <label for="detail" class="form__label--item">アンケートにご協力をお願いします。</label>
             </div>
             <div class="contact-form__group-content">
+                当サイトをどちらでご存じになりましたか？
                 <div class="form__input--text">
                     @foreach ($channels as $channel)
-                    <input type="checkbox" name="channel_ids[]" value="{{ $channel->id }}" id="{{ $channel->id }}">
-                        <label for="{{ $channel->id }}">{{ $channel['content'] }}</label>
+                    <div class="form__item-checkbox-label">
+                        <input type="checkbox" name="channel_ids[]" value="{{ $channel->id }}" id="channel_{{ $channel->id }}">
+                        <label for="channel_{{$channel->id }}">{{ $channel['content'] }}</label>
+                    </div>
                     @endforeach
                 </div>
             </div>
