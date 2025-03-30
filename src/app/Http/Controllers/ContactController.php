@@ -46,7 +46,7 @@ class ContactController extends Controller
         if ($image) {
             $new_name = uniqid(); //新しいファイル名（ランダムな文字数）を作成
             $img_path = Storage::putFileAs(
-                'tmp',
+                'public/tmp',
                 $request->file('img_path'),
                 $new_name
             ); //一時的にtmpフォルダに保存する

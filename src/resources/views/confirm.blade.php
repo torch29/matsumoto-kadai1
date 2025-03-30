@@ -82,7 +82,7 @@
                     <th class="confirm-table__heading">画像</th>
                     <td class="confirm-table__item">
                         @if ($img_path)
-                        <img src="{{ asset('storage/' . $img_path) }}" width="40%">
+                        <img src="{{ asset(str_replace('public/', 'storage/', $img_path)) }}" width="40%">
                         <input type="hidden" name="img_path" value="{{ $img_path }}">
                         @else
                         <p>画像は送信されていません。</p>
