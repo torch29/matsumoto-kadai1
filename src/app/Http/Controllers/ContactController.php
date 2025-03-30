@@ -60,6 +60,7 @@ class ContactController extends Controller
         $contactData = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail']);
         $contact = Contact::create($contactData);
 
+        // アンケートチェックボックス
         if ($request->has('channel_ids')) {
             $contact->channels()->attach($request->input('channel_ids'));
         }
@@ -71,10 +72,11 @@ class ContactController extends Controller
         }
         */
 
+        // 画像の処理
         if ($request->has('img_path') && Storage::exists($request->input('img_path'))) {
             $tmp_img_path = $request->input('img_path');
             $fileName = $contact->id;
-            $new_img_path = 'img/' . $fileName;
+            $new_img_path = 'public/img/' . $fileName;
 
             Storage::move($tmp_img_path, $new_img_path);
 
