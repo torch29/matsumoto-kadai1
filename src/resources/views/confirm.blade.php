@@ -11,7 +11,7 @@
         <h2>Confirm</h2>
     </div>
     <form action="/thanks" class="confirm-form" method="post">
-    @csrf
+        @csrf
         <div class="confirm-table">
             <table class="confirm-table__inner">
                 <tr class="confirm-table__row">
@@ -67,25 +67,36 @@
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
-                    <th class="confirm-table__heading"></th>
+                    <th class="confirm-table__heading">アンケートの回答</th>
                     <td class="confirm-table__item">
                         {{-- アンケートの名称表示用 --}}
                         <input type="text" value="{{implode('，', $channelNames)}}" readonly>
 
                         @foreach($contact['channel_ids'] as $channel_id)
-                            <input type="hidden" name="channel_ids[]" value="{{ $channel_id }}">
+                        <input type="hidden" name="channel_ids[]" value="{{ $channel_id }}">
                         {{-- dump($channel_id) --}}
                         @endforeach
+                    </td>
+                </tr>
+                <tr class="confirm-table__row">
+                    <th class="confirm-table__heading">画像</th>
+                    <td class="confirm-table__item">
+                        @if ($img_path)
+                        <img src="{{ asset('storage/' . $img_path) }}" width="40%">
+                        <input type="hidden" name="img_path" value="{{ $img_path }}">
+                        @else
+                        <p>画像は送信されていません。</p>
+                        @endif
                     </td>
                 </tr>
             </table>
         </div>
         <div class="confirm__button">
             <button class="confirm__button-submit" type="submit">送信</button>
-        {{--</div>
+            {{--</div>
         <div class="confirm__button">--}}
-            <input type="hidden" >
+            <input type="hidden">
             <button class="confirm__button-back" type="button" onclick="history.back(-1)">修正</button>
         </div>
     </form>
-@endsection
+    @endsection

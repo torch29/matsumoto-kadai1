@@ -10,8 +10,8 @@
     <div class="contact-form__title">
         <h2>Contact</h2>
     </div>
-    <form action="/confirm" class="contact-form" method="post">
-    @csrf
+    <form action="/confirm" class="contact-form" method="post" enctype="multipart/form-data">
+        @csrf
         <div class="contact-form__group">
             <div class="form__group-title">
                 <label for="name" class="form__label--item">お名前</label>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="radio-btn">
                             <input type="radio" name="gender" id="gender3" value="3" {{ old('gender') == 3 ? 'checked' : '' }} class="form__input--radio-btn">
-                            <label for="gender3" ><span>その他</span></label>
+                            <label for="gender3"><span>その他</span></label>
                         </div>
                     </div>
                 </div>
@@ -86,16 +86,16 @@
             </div>
             <div class="contact-form__group-content">
                 <div class="form__input--text">
-                    <input type="tel" name="tel1" id="tel1" placeholder="080" value="{{ old('tel1') }}" class="form__input--text-tel"> - 
-                    <input type="tel" name="tel2" placeholder="1234" value="{{ old('tel2') }}" class="form__input--text-tel"> - 
+                    <input type="tel" name="tel1" id="tel1" placeholder="080" value="{{ old('tel1') }}" class="form__input--text-tel"> -
+                    <input type="tel" name="tel2" placeholder="1234" value="{{ old('tel2') }}" class="form__input--text-tel"> -
                     <input type="tel" name="tel3" placeholder="5678" value="{{ old('tel3') }}" class="form__input--text-tel">
                 </div>
                 <div class="form__error">
-                @if ($errors->has('tel_group'))
+                    @if ($errors->has('tel_group'))
                     @foreach ($errors->get('tel_group') as $error)
-                        <div class="error">{{ $error }}</div>
+                    <div class="error">{{ $error }}</div>
                     @endforeach
-                @endif
+                    @endif
                 </div>
             </div>
         </div>
@@ -185,9 +185,22 @@
                 </div>
             </div>
         </div>
+        <div class="contact-form__group">
+            <div class="form__group-title">
+                <label for="detail" class="form__label--item">画像のアップロード</label>
+            </div>
+            <div class="contact-form__group-content">
+                画像がある場合はアップロードして送信してください。
+                <div class="form__input--text">
+                    <div class="form__item-img">
+                        <input type="file" name="img_path">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="form__button">
             <button class="form__button-submit" type="submit">確認画面</button>
         </div>
     </form>
 
-@endsection
+    @endsection
