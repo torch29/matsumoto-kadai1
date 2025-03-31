@@ -8,7 +8,7 @@
 @section('auth')
 <div class="header-utilities">
     <form action="/logout" class="header-utilities__button" method="post">
-    @csrf
+        @csrf
         <button class="header-utilities__button-submit" type="submit">logout</button>
     </form>
 </div>
@@ -20,28 +20,28 @@
         <h2>Admin</h2>
     </div>
 
-{{--adminに最初書いてた検索フォーム--}}
+    {{--adminに最初書いてた検索フォーム--}}
     <form action="/admin" class="search-form" method="get">
-    @csrf
+        @csrf
         <div class="search-form__item">
-            <input type="text" class="search-form__item-input" name="keyword" value=""  placeholder="名前やメールアドレスを入力してください">
-                <div class="select__wrapper">
-                    <select name="gender_select" class="search-form__item-select">
-                        <option value="" selected>性別</option>
-                        <option value="9">全て</option>
-                            @foreach ($genders as $key => $val)
-                            <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
-                    </select>
-                </div>
-                <div class="select__wrapper">
-                    <select name="category_select" class="search-form__item-select">
-                        <option value="" selected>お問い合わせの種類</option>
-                            @foreach ($categories as $category)
-                            <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
-                            @endforeach
-                    </select>
-                </div>
+            <input type="text" class="search-form__item-input" name="keyword" value="" placeholder="名前やメールアドレスを入力してください">
+            <div class="select__wrapper">
+                <select name="gender_select" class="search-form__item-select">
+                    <option value="" selected>性別</option>
+                    <option value="9">全て</option>
+                    @foreach ($genders as $key => $val)
+                    <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="select__wrapper">
+                <select name="category_select" class="search-form__item-select">
+                    <option value="" selected>お問い合わせの種類</option>
+                    @foreach ($categories as $category)
+                    <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="select__wrapper">
                 <input type="date" name="date" class="search-form__item-select" value="年/月/日">
             </div>
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-{{--adminsの問い合わせ内容テーブル--}}
+    {{--adminsの問い合わせ内容テーブル--}}
     <div class="contact-table__content">
         <table class="contact-table">
             <tr class="contact-table__row">
@@ -89,65 +89,79 @@
                 </td>
                 <td class="contact-table__item">
 
-        {{--CSSでのモーダルテスト追記--}}
+                    {{--CSSでのモーダルテスト追記--}}
                     <a href="#{{ $contact->id }}" class="contact-table__detail-button">詳細</button>
-                    
-                <div class="test-modal" id="{{ $contact->id }}">
-                        <div class="test-modal__wrapper">
-                            <a href="#" class="test-modal__close-button">×</a>
-                            <div class="test-modal__content--detail">
-        {{--モーダルダイアログの内容ここから--}}
-                                <table class="modal__content">
-            <tr class="modal-table__row">
-                <th class="modal-table__heading">お名前</th>
-                <td class="modal-table__item">
-                    {{ $contact->last_name . ' ' . $contact->first_name }}
-                </td>
-            </tr>
-            <tr class="modal-table__row">
-                <th class="modal-table__heading">性別</th>
-                <td class="modal-table__item">{{ $genders[$contact->gender] }}</td>
-            </tr>
-            <tr class="modal-table__row">
-                <th class="modal-table__heading">メールアドレス</th>
-                <td class="modal-table__item">{{ $contact->email }}</td>
-            </tr>
-            <tr class="modal-table__row">
-                <th class="modal-table__heading">電話番号</th>
-                <td class="modal-table__item">{{ $contact->tel }}</td>
-            </tr>
-            <tr class="modal-table__row">
-                <th class="modal-table__heading">住所</th>
-                <td class="modal-table__item">{{ $contact->address }}</td>
-            </tr>
-            <tr class="modal-table__row">
-                <th class="modal-table__heading">建物名</th>
-                <td class="modal-table__item">{{ $contact->building }}</td>
-            </tr>
-            <tr class="modal-table__row">
-                <th class="modal-table__heading">お問い合わせの種類</th>
-                <td class="modal-table__item">{{ $contact->category->content }}</td>
-            </tr>
-            <tr class="modal-table__row">
-                <th class="modal-table__heading">お問い合わせ内容</th>
-                <td class="modal-table__item">{{ $contact->detail }}</td>
-            </tr>
-        </table>
-    <form action="/delete" class="test-modal__form" method="post">
-    @method('DELETE')
-    @csrf
-        <div class="delete__button">
-            <input type="hidden" name="id" value="{{ $contact->id }}">
-            <button name="deleteContact" class="delete__button-submit" type="submit">削除</button>
-        </div>
-    </form>
-        {{--モーダルダイアログの内容ここまで--}}
+
+                        <div class="test-modal" id="{{ $contact->id }}">
+                            <div class="test-modal__wrapper">
+                                <a href="#" class="test-modal__close-button">×</a>
+                                <div class="test-modal__content--detail">
+                                    {{--モーダルダイアログの内容ここから--}}
+                                    <table class="modal__content">
+                                        <tr class="modal-table__row">
+                                            <th class="modal-table__heading">お名前</th>
+                                            <td class="modal-table__item">
+                                                {{ $contact->last_name . ' ' . $contact->first_name }}
+                                            </td>
+                                        </tr>
+                                        <tr class="modal-table__row">
+                                            <th class="modal-table__heading">性別</th>
+                                            <td class="modal-table__item">{{ $genders[$contact->gender] }}</td>
+                                        </tr>
+                                        <tr class="modal-table__row">
+                                            <th class="modal-table__heading">メールアドレス</th>
+                                            <td class="modal-table__item">{{ $contact->email }}</td>
+                                        </tr>
+                                        <tr class="modal-table__row">
+                                            <th class="modal-table__heading">電話番号</th>
+                                            <td class="modal-table__item">{{ $contact->tel }}</td>
+                                        </tr>
+                                        <tr class="modal-table__row">
+                                            <th class="modal-table__heading">住所</th>
+                                            <td class="modal-table__item">{{ $contact->address }}</td>
+                                        </tr>
+                                        <tr class="modal-table__row">
+                                            <th class="modal-table__heading">建物名</th>
+                                            <td class="modal-table__item">{{ $contact->building }}</td>
+                                        </tr>
+                                        <tr class="modal-table__row">
+                                            <th class="modal-table__heading">お問い合わせの種類</th>
+                                            <td class="modal-table__item">{{ $contact->category->content }}</td>
+                                        </tr>
+                                        <tr class="modal-table__row">
+                                            <th class="modal-table__heading">お問い合わせ内容</th>
+                                            <td class="modal-table__item">{{ $contact->detail }}</td>
+                                        </tr>
+                                        <tr class="modal-table__row">
+                                            <th class="modal-table__heading">アンケートの回答</th>
+                                            <td class="modal-table__item">アンケートの回答をあとで表示</td>
+                                        </tr>
+                                        <tr class="modal-table__row">
+                                            <th class="modal-table__heading">画像</th>
+                                            <td class="modal-table__item">
+                                                @if ($contact->img_path)
+                                                <img src="{{ asset(str_replace('public/', 'storage/', $contact->img_path)) }}" width="40%">
+                                                @else
+                                                <p>画像は送信されていません。</p>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <form action="/delete" class="test-modal__form" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <div class="delete__button">
+                                            <input type="hidden" name="id" value="{{ $contact->id }}">
+                                            <button name="deleteContact" class="delete__button-submit" type="submit">削除</button>
+                                        </div>
+                                    </form>
+                                    {{--モーダルダイアログの内容ここまで--}}
+                                </div>
                             </div>
                         </div>
-                    </div>
-{{--CSSでのモーダルテスト追記ここまで--}}
+                        {{--CSSでのモーダルテスト追記ここまで--}}
 
-{{--元のボタン
+                        {{--元のボタン
                     <button class="contact-table__item-button">詳細</button>
 --}}
                 </td>
@@ -187,4 +201,4 @@
 
 @section('modal')
 <livewire:modal>
-@endsection
+    @endsection

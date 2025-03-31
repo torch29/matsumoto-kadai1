@@ -36,12 +36,12 @@ class ContactController extends Controller
             2 => '女性',
             3 => 'その他'
         ];
-        $channelIds = $request->input('channel_ids', []); // nullなら空配列に
+        $channelIds = $request->input('channel_ids', []); // nullなら空配列に。未選択のときに「配列がない！」とエラーが出るの防止のため
         $contact['channel_ids'] = $channelIds;
 
         $channelNames = Channel::WhereIn('id', $channelIds)->pluck('content')->toArray();
 
-        $img_path = null;
+        $img_path = null; //初期値をセット 画像が送信されないときにnullが入る
         $image = $request->file('img_path');
         if ($image) {
             $new_name = uniqid(); //新しいファイル名（ランダムな文字数）を作成

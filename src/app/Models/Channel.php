@@ -10,12 +10,14 @@ class Channel extends Model
 {
     use HasFactory;
 
-    public function contacts() {
+    public function contacts()
+    {
         return $this->belongsToMany(Contact::class)->withTimestamps();
     }
 
+    /* 教材参考にしてみたけど今回は違ったかも
     public function getChannel(){
         return 'ID'. $this->id . ':' . $this->content;
     }
-
+    */
 }
