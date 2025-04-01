@@ -24,16 +24,22 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [AuthController::class, 'admin']);
 });
 
+/* 不要
 Route::get('/register', [AuthController::class, 'signup']);
 Route::get('/login', [AuthController::class, 'signin'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout']);
+*/
 
 Route::get('/modal', Modal::class);
-//Route::get('/livewire/message/{name}', Modal::class);
+
 
 //登録・ログイン機能
 Route::post('/register', [RegisteredUserController::class, 'store']);
-Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+//Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+
+//プロフィール画面の表示
+Route::get('/profile', [AuthController::class, 'profile']);
+Route::post('/profile_entry', [AuthController::class, 'profile_entry']);
 
 //問い合わせフォーム
 Route::get('/', [ContactController::class, 'index']);
@@ -44,4 +50,4 @@ Route::post('/thanks', [ContactController::class, 'store']);
 Route::delete('/delete', [ContactController::class, 'delete']);
 
 //検索
-Route::get('/admin', [ContactController::class, 'search']);
+Route::get('/search', [ContactController::class, 'search']);

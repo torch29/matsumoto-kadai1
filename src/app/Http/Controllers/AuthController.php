@@ -6,20 +6,24 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Category;
 use App\Models\Channel;
+use App\Models\Profile;
 
 class AuthController extends Controller
 {
 
+    /*
     public function signup()
     {
         return view('auth.register');
     }
+        */
 
-
+    /* 不要
     public function signin()
     {
         return view('auth.login');
     }
+        */
 
     public function admin()
     {
@@ -37,5 +41,20 @@ class AuthController extends Controller
     public function logout()
     {
         return view('auth.login');
+    }
+
+    public function profile()
+    {
+        $profiles = Profile::with('users:id, name')->get();
+
+        return view('auth.profile', compact('profiles'));
+    }
+
+    public function profile_entry(Request $request)
+    {
+        $profile = $request->only(['user_id', 'gender', 'birthday']);
+        Profile::create($profile);
+
+        return view('admin');
     }
 }

@@ -21,7 +21,7 @@
     </div>
 
     {{--adminに最初書いてた検索フォーム--}}
-    <form action="/admin" class="search-form" method="get">
+    <form action="/search" class="search-form" method="get">
         @csrf
         <div class="search-form__item">
             <input type="text" class="search-form__item-input" name="keyword" value="" placeholder="名前やメールアドレスを入力してください">

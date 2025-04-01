@@ -5,9 +5,9 @@
 @endsection
 
 @section('auth')
-    <div class="header-utilities">
-        <button class="header-utilities__button" type="button" onclick="location.href='/login'">login</button>
-    </div>
+<div class="header-utilities">
+    <button class="header-utilities__button" type="button" onclick="location.href='/login'">login</button>
+</div>
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
     </div>
 
     <form action="/register" class="register-form" method="post">
-    @csrf
+        @csrf
         <div class="register-form__item">
             <label for="name" class="register-form__item-label">お名前</label>
             <input type="text" name="name" id="name" class="register-form__item-input" value="{{ old('name') }}" placeholder="例: 山田 太郎">
@@ -46,6 +46,7 @@
             </div>
         </div>
         <div class="register-form__button">
+            <input type="hidden" name="id">
             <button class="register-form__button-submit" type="submit">登録</button>
         </div>
     </form>

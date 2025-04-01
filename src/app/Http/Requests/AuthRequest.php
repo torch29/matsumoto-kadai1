@@ -26,7 +26,7 @@ class AuthRequest extends LoginRequest
     {
         $rules = parent::rules();
 
-        $rules['name'] = ['required','sometimes'];
+        $rules['name'] = ['required', 'sometimes'];
         $rules['email'] = ['required', 'email'];
         $rules['password'] = ['required'];
 
@@ -34,7 +34,8 @@ class AuthRequest extends LoginRequest
     }
 
 
-    public function messages() {
+    public function messages()
+    {
         return [
             'name.required' => 'お名前を入力してください',
             'email.required' => 'メールアドレスを入力してください',
