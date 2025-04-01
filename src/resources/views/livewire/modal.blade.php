@@ -119,7 +119,11 @@
                 </tr>
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">アンケートの回答</th>
-                    <td class="modal-table__item">アンケートの回答をあとで表示</td>
+                    <td class="modal-table__item">
+                        @foreach ($contact->channels as $channel)
+                        {{ $contact->channels->pluck('content')->implode('，') }}
+                        @endforeach
+                    </td>
                 </tr>
                 <tr class="modal-table__row">
                     <th class="modal-table__heading">画像</th>

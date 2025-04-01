@@ -30,7 +30,8 @@ class AuthController extends Controller
             2 => '女性',
             3 => 'その他'
         ];
-        return view('admin', compact('contacts', 'genders', 'categories'));
+        $channels = Contact::with('channels');
+        return view('admin', compact('contacts', 'genders', 'categories', 'channels'));
     }
 
     public function logout()
