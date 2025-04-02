@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; // 現在認証しているユーザーID取得のために追加
 use App\Models\Contact;
 use App\Models\Category;
 use App\Models\Channel;
 use App\Models\Profile;
+
 
 class AuthController extends Controller
 {
@@ -45,16 +47,23 @@ class AuthController extends Controller
 
     public function profile()
     {
-        $profiles = Profile::with('users:id, name')->get();
+        $id = Auth::id(); //現在認証しているユーザIDを取得
+        $user = Auth::user();
+        //$inputs = ['user_id' => $id];
 
-        return view('auth.profile', compact('profiles'));
+        return view('auth.profile', compact('id', 'user'));
     }
 
     public function profile_entry(Request $request)
     {
-        $profile = $request->only(['user_id', 'gender', 'birthday']);
+        $user = Auth::user();
+        $id = Auth::id();
+        //$inputs = ['user_id' => $id];
+        $profile = $request->only(['gender', 'birthday']);
+        $profile['user_id'] = $user->id;
+        //$profile = $request->only(['user_id', 'gender', 'birthday']);
         Profile::create($profile);
 
-        return view('admin');
+        return redirect('/admin');
     }
 }

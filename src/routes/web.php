@@ -22,6 +22,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 //表示
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AuthController::class, 'admin']);
+    Route::get('/profile', [AuthController::class, 'profile']);
 });
 
 /* 不要
@@ -38,7 +39,6 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 //Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 //プロフィール画面の表示
-Route::get('/profile', [AuthController::class, 'profile']);
 Route::post('/profile_entry', [AuthController::class, 'profile_entry']);
 
 //問い合わせフォーム

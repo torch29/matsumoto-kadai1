@@ -19,9 +19,13 @@
     <form action="/profile_entry" class="profile-form" method="post">
         @csrf
         <div class="profile-form__item">
-            <label for="name" class="profile-form__item-label">お名前</label>
-            {{dump($profiles)}}
-            <input type="hidden" name="user_id" id="name">
+            <label for="name" class="profile-form__item-label">お名前：</label>
+            {{--var_dump($id)--}}
+            {{--dump($user->name)--}}
+            <p>{{ ($user->name) }}さん</p>
+            <p>プロフィールをご登録ください。</p>
+            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+            {{--var_dump($inputs)--}}
         </div>
         <div class="profile-form__group">
             <div class="profile-form__group-title">
@@ -47,6 +51,7 @@
         <div class="profile-form__item">
             <label for="" class="profile-form__item-label">生年月日</label>
             <input type="date" name="birthday">
+            {{--<input type="text" name="birthday" placeholder="1950/01/01">--}}
         </div>
         <div class="form__button">
             <button class="form__button-submit" type="submit">プロフィール登録</button>
