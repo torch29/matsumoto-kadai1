@@ -19,11 +19,11 @@
     <form action="/profile_entry" class="profile-form" method="post">
         @csrf
         <div class="profile-form__item">
+            <p>プロフィールをご登録ください。</p>
             <label for="name" class="profile-form__item-label">お名前：</label>
             {{--var_dump($id)--}}
             {{--dump($user->name)--}}
-            <p>{{ ($user->name) }}さん</p>
-            <p>プロフィールをご登録ください。</p>
+            <span>{{ ($user->name) }}さん</span>
             <input type="hidden" name="user_id" value="{{ Auth::id() }}">
             {{--var_dump($inputs)--}}
         </div>
@@ -50,7 +50,7 @@
         </div>
         <div class="profile-form__item">
             <label for="" class="profile-form__item-label">生年月日</label>
-            <input type="date" name="birthday">
+            <input type="date" name="birthday" class="profile-form__item-input">
             {{--<input type="text" name="birthday" placeholder="1950/01/01">--}}
         </div>
         <div class="form__button">

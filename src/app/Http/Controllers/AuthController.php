@@ -64,6 +64,7 @@ class AuthController extends Controller
         //$profile = $request->only(['user_id', 'gender', 'birthday']);
         Profile::create($profile);
 
+        //return redirect('/admin')->with('message', 'プロフィールを登録しました');
         return redirect('/admin');
     }
 }

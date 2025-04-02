@@ -192,6 +192,12 @@ li a {
     cursor: pointer;
 }
 
+.profile__alert--success {
+    padding: 10px 30px;
+    border-color: #badbcc;
+    background-color: #d1e7dd;
+    color: #7F7268;
+}
 
 /*CSSでのモーダルテスト用追記ここから*/
 .contact-table__detail-button {

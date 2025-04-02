@@ -29,17 +29,27 @@ body {
 }
 
 .register-form,
-.login-form {
+.login-form,
+.profile-form {
     width: 55%;
     margin: 25px auto;
     background-color: #fff;
     border: #7F7268 1px solid;
     padding: 50px 70px;
 }
+.profile-form {
+    padding-top: 35px;
+}
 
 .register-form__item,
-.login-form__item {
+.login-form__item,
+.profile-form__item {
     margin: 10px auto 25px;
+}
+
+.profile-form__item p {
+    margin-top: 0;
+    margin-bottom: 35px;
 }
 
 .register-form__item-label,
@@ -49,7 +59,8 @@ body {
     font-weight: bold;
 }
 .register-form__item-input,
-.login-form__item-input {
+.login-form__item-input,
+.profile-form__item-input {
     height: 35px;
     width: 100%;
     background-color: #F5F5F5;
@@ -59,23 +70,101 @@ body {
     display: block;
     outline: none;
 }
+.profile-form__item-label,
+.profile-form__item span {
+    display: inline-block;
+    font-weight: bold;
+}
 
 .form__error {
     color: #BF370D;
 }
 
 .register-form__button,
-.login-form__button {
+.login-form__button,
+.form__button {
     display: flex;
     justify-content: center;
     margin: 15px;
 }
 .register-form__button-submit,
-.login-form__button-submit {
+.login-form__button-submit,
+.form__button-submit {
     text-align: center;
     background-color: #82766A;
     color: #fff;
     border: none;
     padding: 5px 10px;
+    cursor: pointer;
+}
+.form__label--item-span {
+    font-weight: bold;
+}
+
+/*以下ラジオボタン群の設定*/
+.radio-btn-area {
+    width: 80%;
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    align-items: center;
+}
+
+.radio-btn {
+    width: 100%;
+    height: 45px;
+}
+
+.radio-btn input {
+    display: none;
+}
+
+.radio-btn label {
+    display: flex;
+    width: 100%;
+    /* ラジオボタンを大枠いっぱいに広げるための設定 */
+    height: 100%;
+    /* ラジオボタンを大枠いっぱいに広げるための設定 */
+    align-items: center;
+    position: relative;
+}
+
+.radio-btn span {
+    display: block;
+    width: 80%;
+    padding-left: 26px;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+/* 選択・未選択時の両方に存在する丸ボタン */
+.radio-btn label::before,
+.radio-btn input:checked+label::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border: #9C8F82 1px solid;
+    border-radius: 50%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 13px;
+    transform: translate(-50%, -50%);
+    /* topとleftが丸の中心を基準とするための設定 */
+    z-index: 10;
+    cursor: pointer;
+}
+
+.radio-btn input:checked+label::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #9C8F82;
+    position: absolute;
+    top: 50%;
+    left: 13px;
+    transform: translate(-50%, -50%);
+    z-index: 11;
     cursor: pointer;
 }
